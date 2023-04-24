@@ -6,12 +6,12 @@
 \begin{document}
 
 
-\title{Title of American Medical Informatics Association Submission}
+\title{Using Airgapped Systems in the Context of Collaborative Health Analytics Partnerships}
 
-\author{Firstname A. Lastname, MD, MPH$^1$, Firstname B. Lastname, MD, PhD$^2$ }
+\author{Jacob S. Zelko, BS$^1$, Ashlin Harris, PhD$^2$, Shawn Imtiazuddin, MS$^3$, Matt Sanders, MS$^3$, Richard Starr, BS$3$, Megan Denham, MS$1,3$}
 
 \institutes{
-    $^1$ Institution, City, MA; $^2$Institution, City, CA
+    $^1$Georgia Tech Research Institute, Atlanta, GA; $^2$Brown University, Providence, RI; $3$Georgia Institute of Technology, Atlanta, GA
 }
 
 \maketitle
@@ -22,16 +22,37 @@
 
 \section*{Introduction}
 
-This template should be used as a starting point for AMIA submissions.  A number of Word styles, all beginning with the word ``AMIA", are available for use in your submissions.
+\subsection*{Purpose of Airgapped Systems}
 
-It is important to review the AMIA Call for Participation where types of submissions considered and general requirements for each submission type are listed. All submissions must conform to the format and presentation requirements described in the CFP and at the submission site.
+The use of collaborative health analytics efforts is a critical step in improving healthcare outcomes. However, with the increasing number of data breaches and cyber-attacks, protecting sensitive healthcare data has become more challenging than ever before. One approach that has gained traction in recent years is the use of airgapped systems.
 
+Air-gapped systems represent the isolation of a set of resources, including physical networking and systems hardware, networks, applications, and data via the segmentation of all those components from the outside purview. The purpose of air-gapped systems is two-fold. Firstly, such systems are required by IRB and other requirements that are set forth by the data owners and governing bodies. Secondly, the proper protection of identifiable healthcare data cannot be realized in a non-regulated and public domain.
 
-\section*{Another Major Heading and References}
+One other justification for air-gapped systems is protecting medical equipment from malware. While it is safe to say that air-gapped networks are less susceptible to low-effort attacks, the greatest threats are targeted breaches.
 
-This sentence has two reference citations\cite{pryor83,gardner90}.
+\subsection*{Challenges of Working within Airgapped Systems within Healthcare}
 
-More text of an additional paragraph, with a figure reference (Figure~\ref{fig:amia_figure}) and a figure inside a Word text box below.  Figures need to be placed as close to the corresponding text as possible and not extend beyond one page.
+Despite the robust security measures put in place within airgapped systems, the weakest link in the security chain is often the individual. The intentional or unintentional actions of an individual, such as opening a malicious email or sharing login credentials, can compromise the security of the entire system. To prevent such incidents, system administrators must regularly educate users on safe computing practices and provide guidelines for handling sensitive data. Additionally, strict access controls should be enforced to ensure that users can only access the data and systems they need for their work, and audit logs should be reviewed regularly to detect any unusual activity.
+
+Another of the major challenges of working within airgapped systems is the greater level of scrutiny placed on system administrators and data owners to prevent data leakages from the protected environment. The use of airgapped systems is driven by the need to protect sensitive healthcare data, so any breach or leak of this data could have serious consequences for both the individuals affected and the organizations responsible for protecting the data. System administrators and data owners must ensure that all necessary controls are in place to prevent unauthorized access to the system and data. This includes implementing strict access controls, monitoring all activity within the system, and conducting regular security audits.
+
+Another challenge is the strict rules and regulations that must be adhered to based on the type of data that is housed in the environment. Different types of data may be subject to different controls, and there may be multiple standards and certification programs that must be followed. For example, healthcare data may be subject to controls set forth by governing bodies such as NIST, as well as additional controls mandated by standards like HITRUST. These controls may include encryption, access controls, and other measures to protect the confidentiality, integrity, and availability of the data.
+
+In addition, the network and systems within airgapped environments are designed to operate under the deny all outbound traffic by default rule. This means that system administrators may not freely download operating system or third-party application updates from public-facing vendor-supported websites. Instead, local repositories must be utilized where it makes sense for airgapped systems to pull updates from those repositories. Any changes to allow communication to the outside, whether temporary or permanent, requires the intervention and audit from the compliance team. Users also face a similar challenge as they are not able to easily pull code from places like GitHub and other public repositories. Instead, a more manual download then import process is generally enforced. Additionally, there are several environmental controls that result in decreasing a user's "ease of use" factor, such as multiple touchpoints for users in order to access the environment, and troubleshooting for both users and administrators can be challenging.
+
+Overall, these challenges underscore the importance of careful planning and implementation of airgapped systems for healthcare research. While airgapped systems provide important protections for sensitive healthcare data, they require a significant investment of time, effort, and resources to implement and maintain.
+
+\subsection*{Importance of Preparing for Air-Gapped Systems in Healthcare}
+
+When it comes to preparing air-gapped solutions in healthcare, it's crucial to keep in mind that the efficiencies that may exist in a regular working environment may not exist in the Air-Gapped environment. The additional layers of security and restrictions can make even simple tasks more complex and time-consuming. This means that application owners must consider how the application may function differently in an Air-Gapped environment.
+
+For example, in an air-gapped environment, centralized or shared repositories for applications such as R, Python, Julia, etc. are necessary. This allows for the application owners to control which versions of a particular package are allowed to be used within the environment. Any request for a new package for an application must be audited then imported by the compliance and operations teams. This ensures that only approved and secure packages are used in the system, and helps to prevent the introduction of vulnerabilities or security risks.
+
+Updates to a Virtual Desktop-based infrastructure also add additional levels of complexity to the import/update process. The updates must be carefully vetted and tested to ensure they do not introduce new security risks or vulnerabilities. Once approved, the updates must be imported into the system in a way that minimizes disruption to ongoing work and avoids the introduction of errors or compatibility issues. All of these steps require careful coordination and planning by the application owners and compliance teams, as well as a high degree of expertise and technical knowledge.
+
+Ultimately, the importance of preparing air-gapped solutions in healthcare cannot be overstated. The sensitive and confidential nature of healthcare data means that protecting it from unauthorized access or theft is of paramount importance. This requires a combination of robust security protocols, careful planning and coordination, and ongoing monitoring and evaluation to ensure that the system remains secure and effective over time. By taking a proactive and vigilant approach to air-gapped solutions, healthcare organizations can ensure the integrity and safety of their data, while also meeting regulatory and compliance requirements.
+
+\section*{Georgia Institute of Technology's Protected Health Data Infrastructure (PHDI)}
 
 \begin{figure}[H]
   \centering
@@ -40,47 +61,41 @@ More text of an additional paragraph, with a figure reference (Figure~\ref{fig:a
  \label{fig:amia_figure}
 \end{figure}
 
-This is additional text added just to show the one-column formatting. This is additional text added just to show the one-column formatting. This is additional text added just to show the one-column formatting.  This is additional text added just to show the one-column formatting. This is additional text added just to show the one-column formatting. This is additional text added just to show the one-column formatting.  This is additional text added just to show the one-column formatting.
+\subsection*{PHDI Architecture}
 
-This paragraph contains a reference to a table just below (Table~\ref{tab:submission}).  All tables need to be placed as close to the corresponding text as possible, But each individual table should be on one page and not extend to multiple pages unless labeled as ``Continued".
+The first step in setting up an airgapped system is the profile set-up and management process. This involves configuring the system's security settings, user accounts, and access controls.  
 
-\begin{table}[H]
-\begin{center}
-\begin{tabular}{|l|l|l|}
-\hline
-Submission Type	            &Abstract Length	&Page Length Maximum \\
-\hline
-Paper                       &125-150 words	    &Ten                 \\
-\hline 
-Student Paper	            &125-150 words	    &Ten                 \\
-\hline
-Poster                      &50-75 words        &One                 \\
-\hline
-Panel	                    &150-200 words      &Three               \\
-\hline
-Workshop	                &150-200 words      &Three               \\
-\hline
-Theater-style Demonstrations&150-200 words	    &One                 \\
-\hline
-Partnerships in Innovation	&150-200 words	    &Three               \\
-\hline
-ACMI Senior Presentations	&150-200 words	    &Two                 \\
-\hline
-\end{tabular}
-\end{center}
-\caption{Submission type, abstract length, and page length maximum for AMIA submissions.}
-\label{tab:submission}
-\end{table}
+The staging environment is used to prepare and test software before deployment. An important distinction about the PHDI Staging environment is that it does not connect to any database or import any protected data. However, it does have internet access for pulling required content for analyses. The staging environment is ephemeral and can be destroyed, allowing for easy rollbacks and recovery in case of issues. 
 
-This is another paragraph.
+Deployment involves using a gold image, which is a pre-configured system image that contains all the necessary software and configurations for the airgapped system. The gold image is also somewhat ephemeral, meaning it can be easily replaced or updated without affecting the rest of the ABC system. When the gold image is deployed, any content that was created within the staging environment can be included within the gold image. 
 
-\paragraph{Sample paragraph heading}\lipsum[1]
+\subsection*{Software Management}
 
-\subsection*{Conclusion}
+Since airgapped systems are isolated from external networks, software must be managed internally and shared across environments. This includes configuring and testing software in the staging environment before deploying it via a gold image. 
+
+Practical considerations for programming languages in airgapped systems include R packages and Julia packages. In the case of R packages, there may be issues with virtual environments with popular virtual environment packages like renv failing, which can make it difficult to manage and share packages. As a result, collaborators may need to send downloaded copies of packages to ensure consistency across environments. Multithreading can also present challenges when copying configurations between threads. 
+
+Julia packages can be used in airgapped systems, but virtual environments can be thwarted by shared environments. In such cases, system images could be built within the staging environment. This allows developers to test software configurations thoroughly and ensures that they are secure before deployment. 
+
+\section*{Site Collaboration}
+
+Shawn and Jacob speak on lessons learned in collaborating in air-gapped environments. 
+
+\section*{Discussion}
+
+A. Biosurveillance and Outbreak Management 
+
+C. Evaluating Public Health Programs 
+
+D. Modeling the Spread of Disease 
+
+E. Understanding the Epidemiology of Disease 
+
+\section*{Conclusion}
 
 Your conclusion goes at the end, followed by References.  References begin below with a header that is centered.  Only the first word of an article title is capitalized in the References.
 
-\subparagraph{Acknowledgments}\lipsum[1]
+\section*{Acknowledgments}
 
 % References as numbers
 \makeatletter
@@ -90,5 +105,17 @@ Your conclusion goes at the end, followed by References.  References begin below
 % unstr is used to keep citation order
 \bibliographystyle{vancouver}
 \bibliography{amia}  
+
+\section*{Appendix}
+
+\subsection*{Practical Considerations for Popular Data Science Languages}
+
+\subsubsection*{Python}
+
+\subsubsection*{R}
+
+\subsubsection*{Julia}
+
+Julia's package manager relies on internet access, so it can be challenging to make dependencies available on secure systems. One solution is to use containers, but the issue can also be solved within Julia. PackageCompiler.jl compiles Julia code ahead of time, primarily for improved performance in certain workflows. In particular, generating a sysimage produces a performant stand-alone Julia session, and since its main drawback (version locking) is mitigated on secure systems, it seems to be the best approach for putting a Julia session on a system without internet or ssh access available to users. 
 
 \end{document}

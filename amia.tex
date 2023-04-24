@@ -118,4 +118,23 @@ Your conclusion goes at the end, followed by References.  References begin below
 
 Julia's package manager relies on internet access, so it can be challenging to make dependencies available on secure systems. One solution is to use containers, but the issue can also be solved within Julia. PackageCompiler.jl compiles Julia code ahead of time, primarily for improved performance in certain workflows. In particular, generating a sysimage produces a performant stand-alone Julia session, and since its main drawback (version locking) is mitigated on secure systems, it seems to be the best approach for putting a Julia session on a system without internet or ssh access available to users. 
 
+\section{Comments from Matt}
+
+Could you add Richard Starr to this as well, I would be interested in his take on this. Here are a few quick high level thoughts:
+ 
+Is the intended scope research and analytics environments or more broad to include anyone working with healthcare data? I think it is the former, but there are a few places where it is more broad.  If you do intend to include hospital settings, then some of the assumptions about how public/accessible/agile things would not apply (I hope!). Similarly including medical equipment in the scope would require more knowledge of how hospitals work operationally.
+ 
+I am not sure that air-gapped is the best way to describe the environments as that has a specific connotation in military/defense industry. The literal definition is of course to not have a network connection to the resource. This is not how PHDI has ever operated or what the controls paradigms in healthcare (HIPAA/HITRUST/CMS,etc) are requiring and/or advocating.
+ 
+I would be surprised if there are not already some papers in systems and security research that discuss these topics as they are not unique to healthcare. It would be good to get a sense of that in order to determine how best to position this work.
+ 
+Depending on how you want to scope things and focus the contribution, I wonder if we couldn’t pick a family of user and operator challenges specific to your workflows? I might suggest tweaking the outline to look something like:
+ 
+1) summarize the controls and requirements for working with controlled data at a high level as well as some specific restrictions and limitations that are common to the approaches to meeting the requirements
+2) share some baseline understanding for those doing analysis and development work to understand how working in a more controlled/restricted environment is different from what they are used to including discussing the challenges/overhead with this from the developer point of view as well as those responsible for operating and securing the systems
+4) share some best practices for how to mitigate these challenges and overhead
+5) outline some future needs/direction?
+ 
+I do not anticipate having cycles to do the research or drafting, but depending on the approach you go with I can likely give feedback and do some editing prior to submission.
+
 \end{document}

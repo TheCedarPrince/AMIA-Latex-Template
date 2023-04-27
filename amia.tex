@@ -73,13 +73,69 @@ Deployment involves using a gold image, which is a pre-configured system image t
 
 Since airgapped systems are isolated from external networks, software must be managed internally and shared across environments. This includes configuring and testing software in the staging environment before deploying it via a gold image. 
 
-Practical considerations for programming languages in airgapped systems include R packages and Julia packages. In the case of R packages, there may be issues with virtual environments with popular virtual environment packages like renv failing, which can make it difficult to manage and share packages. As a result, collaborators may need to send downloaded copies of packages to ensure consistency across environments. Multithreading can also present challenges when copying configurations between threads. 
+\subsubsection{R Package Environments}
+
+When working with projects that rely on the R programming language, a variety of issues can propogate:
+
+\begin{enumerate}
+	\item Reproducible project environments: Reproducible project management tools (such as renv or packrat) will fail to reproduce the project environment once deployed into an airgapped system. For example, these are the steps to create and instantiate an R based project using the tool, `renv`:
+		\begin{enumerate}
+			\item Call `renv::init()` to initialize a new project environment.
+
+			\item Install and remove R packages into the project as needed.
+
+			\item Execute `renv::snapshot()` to save the state of the project to `renv.lock`.
+
+			\item Use `renv::restore()` to revert to the previous state encoded in the lockfile if needed or to instantiate (i.e. install required project packages) an already existing project for the first time.
+		\end{enumerate}
+	Although this system works great for use when it is guaranteed one has network connection, this will fail for airgapped systems as all `renv` will do is consistently record R version packages. Some complex workarounds do exist for this problem but often break or are not easily reproduced. 
+	\item Package Requirements: Packages required for projects may not be previously approved or audited for import into an airgapped environment. This can have a deletrious effect on the efficacy of not only running a project but also effective and timely collaboration. 
+	\item Non-Standard Architecture: Due to the workarounds needed at times for working with R projects inside an airgapped system, standard architecture that R relies on can become unreliable. One crucial example is for multi-threaded R processes. These processes may be unable to resolve proper project paths and package locations due to non-standard locations.
+\end{enumerate}
+
+Some suggested solutions for handling these problems are listed below:
+
+\begin{enumerate}
+	\item An approach that was found to be effective for actually ensuring the reproducibility of an R project for an airgapped environment was to use the following approach:
+	\begin{enumerate}
+		\item Move, clone, or upload the R project into a development environment (it is assumed that this development environment has internet connection and system architecture that matches exactly to the production environment).
+		\item Navigate into the project and use `renv` to instantiate and download the project package dependencies.
+		\item Locate where exactly these packages were installed onto the development machine and zip them into a zip file.
+		\item Move the R project into the production environment and disable `renv` (this is to make `renv` stop trying to force a connection to the internet or throw connection errors).
+		\item Move the package zip file into the production environment and unzip it into a single directory.
+		\item Source the package directory from the R package as an external or different library. 
+		\item Proceed with analysis or experiments now with this configuration.
+	\end{enumerate}
+	This will enable one to work with the required packages and package versions for a given R project. 
+	\item A potential approach that can address audit requirements is to set-up a custom site-specific CRAN registry. This registry can be established to enforce auditing procedures and to ensure that any package brought into an environment is benign. Additionally, such registries could actually be connected to a protected environment enabling users to install required packages as needed in much the same way of installing packages normally outside a protected environment. 
+	\item To address the often nonstandard architecture of R projects in a protected environment, one can set a package .Rprofile with appropriate paths. This .Rprofile can then propagate across processes ensuring that all spawned processes have access to required paths and packages for tasks to be performed on that process.
+\end{enumerate}
+
+\subsubsection{Julia Package Environments}
+
+When working with projects that rely on the Julia programming language, a variety of issues can propogate:
+
+\begin{enumerate}
+	\item Reproducible project environments: One of the strongest assets to the Julia ecosystem is its ability to manage and version projects that are written in Julia. Tools (such as the native Pkg library and DrWatson.jl) for reproducible projects in Julia depend on two files being the Project.toml, which specify what packages and Julia version the user of the project will need, and a Manifest.toml, which specifies every single dependency required by every single package within a project. However, similar to R, 
+\end{enumerate}
 
 Julia packages can be used in airgapped systems, but virtual environments can be thwarted by shared environments. In such cases, system images could be built within the staging environment. This allows developers to test software configurations thoroughly and ensures that they are secure before deployment. 
 
 \section*{Site Collaboration}
 
 Shawn and Jacob speak on lessons learned in collaborating in air-gapped environments. 
+
+Restricted environments can, at times, be frustrating to work with in collaborative efforts. This can be for a number of reasons such as ....
+
+Maintenance cylces: routine maintenance that is part of maintaining a restricted environment can be at odds with collaborative efforts. For example, if a secure environment is going to be down for a few days in a work week, this can delay urgent analysis efforts needed in a collaboration. Additionally, interruptions caused by maintenance can completely pause or stop an analysis. 
+
+To work around this, there are various methods for collaborators can pursue to mitigate disruptions. These stages could then be completed by a site collaborator who has a restricted environment in between maintenance windows. 
+
+Automating export and suppression procedures:
+
+Provide documentation about site specifics to mitigate debugging by site collaborator:
+
+
 
 \section*{Discussion}
 

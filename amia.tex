@@ -20,9 +20,9 @@
 
 \textit{Abstract text goes here, justified and in italics.  The abstract would normally be one paragraph long.  See Table~\ref{tab:submission}. for appropriate abstract length by submission type.}
 
-\section*{Introduction}
+\section*{Background}
 
-\subsection*{Purpose of Airgapped Systems}
+\subsection{Overview of Restricted Environments}
 
 The use of collaborative health analytics efforts is a critical step in improving healthcare outcomes. However, with the increasing number of data breaches and cyber-attacks, protecting sensitive healthcare data has become more challenging than ever before. One approach that has gained traction in recent years is the use of airgapped systems.
 
@@ -30,7 +30,14 @@ Air-gapped systems represent the isolation of a set of resources, including phys
 
 One other justification for air-gapped systems is protecting medical equipment from malware. While it is safe to say that air-gapped networks are less susceptible to low-effort attacks, the greatest threats are targeted breaches.
 
-\subsection*{Challenges of Working within Airgapped Systems within Healthcare}
+\subsection{Purpose of Restricted Environments}
+
+\begin{enumerate}
+	\item Common controls for restricted environments
+	\item Requirements Localized for Deployments
+\end{enumerate}
+
+\subsection{Restrictions and Limitations}
 
 Despite the robust security measures put in place within airgapped systems, the weakest link in the security chain is often the individual. The intentional or unintentional actions of an individual, such as opening a malicious email or sharing login credentials, can compromise the security of the entire system. To prevent such incidents, system administrators must regularly educate users on safe computing practices and provide guidelines for handling sensitive data. Additionally, strict access controls should be enforced to ensure that users can only access the data and systems they need for their work, and audit logs should be reviewed regularly to detect any unusual activity.
 
@@ -42,8 +49,6 @@ In addition, the network and systems within airgapped environments are designed 
 
 Overall, these challenges underscore the importance of careful planning and implementation of airgapped systems for healthcare research. While airgapped systems provide important protections for sensitive healthcare data, they require a significant investment of time, effort, and resources to implement and maintain.
 
-\subsection*{Importance of Preparing for Air-Gapped Systems in Healthcare}
-
 When it comes to preparing air-gapped solutions in healthcare, it's crucial to keep in mind that the efficiencies that may exist in a regular working environment may not exist in the Air-Gapped environment. The additional layers of security and restrictions can make even simple tasks more complex and time-consuming. This means that application owners must consider how the application may function differently in an Air-Gapped environment.
 
 For example, in an air-gapped environment, centralized or shared repositories for applications such as R, Python, Julia, etc. are necessary. This allows for the application owners to control which versions of a particular package are allowed to be used within the environment. Any request for a new package for an application must be audited then imported by the compliance and operations teams. This ensures that only approved and secure packages are used in the system, and helps to prevent the introduction of vulnerabilities or security risks.
@@ -52,11 +57,90 @@ Updates to a Virtual Desktop-based infrastructure also add additional levels of 
 
 Ultimately, the importance of preparing air-gapped solutions in healthcare cannot be overstated. The sensitive and confidential nature of healthcare data means that protecting it from unauthorized access or theft is of paramount importance. This requires a combination of robust security protocols, careful planning and coordination, and ongoing monitoring and evaluation to ensure that the system remains secure and effective over time. By taking a proactive and vigilant approach to air-gapped solutions, healthcare organizations can ensure the integrity and safety of their data, while also meeting regulatory and compliance requirements.
 
-\section*{Georgia Institute of Technology's Protected Health Data Infrastructure (PHDI)}
+\section{Methodologies}
+
+\subsection{Traditional Exploratory Data Analysis}
+
+        \begin{enumerate}
+            \item Popular Data Science Ecosystems
+            \item Software development processes
+        \end{enumerate}
+
+\subsection{Traditional Software Development Processes} 
+
+\subsection{Collaboration and Network Studies (Jacob)}
+
+\subsection{Contrast Limitations from Restricted Environments (Shawn)}
+        \begin{enumerate}
+            \item Challenges with existing workflows
+            \item ...
+        \end{enumerate}
+
+
+\section*{Recommendations and Best Practices}
+
+\subsection{System Administration to Enforce Proper Operations and Compliance (Shawn)}
+
+        \begin{enumerate}
+            \item ...
+        \end{enumerate}
+
+
+\subsection{Researcher compliance (Jacob/Shawn)}
+        
+\subsubsection{Restricted Environment Exploratory Data Analysis}
+
+\subsubsection{Restricted Environment Software Development }
+
+\section*{Discussion}
+
+A. Biosurveillance and Outbreak Management 
+
+C. Evaluating Public Health Programs 
+
+D. Modeling the Spread of Disease 
+
+E. Understanding the Epidemiology of Disease 
+
+\subsection*{Site Collaboration}
+
+Shawn and Jacob speak on lessons learned in collaborating in air-gapped environments. 
+
+Restricted environments can, at times, be frustrating to work with in collaborative efforts. This can be for a number of reasons such as ....
+
+Maintenance cylces: routine maintenance that is part of maintaining a restricted environment can be at odds with collaborative efforts. For example, if a secure environment is going to be down for a few days in a work week, this can delay urgent analysis efforts needed in a collaboration. Additionally, interruptions caused by maintenance can completely pause or stop an analysis. 
+
+To work around this, there are various methods for collaborators can pursue to mitigate disruptions. These stages could then be completed by a site collaborator who has a restricted environment in between maintenance windows. 
+
+Automating export and suppression procedures:
+
+Provide documentation about site specifics to mitigate debugging by site collaborator:
+
+
 
 \subsection{Balancing Privacy with Usability}
 
-\subsection*{PHDI Architecture}
+\section*{Conclusion}
+
+Your conclusion goes at the end, followed by References.  References begin below with a header that is centered.  Only the first word of an article title is capitalized in the References.
+
+\section*{Acknowledgments}
+
+% References as numbers
+\makeatletter
+\renewcommand{\@biblabel}[1]{\hfill #1.}
+\makeatother
+
+% unstr is used to keep citation order
+\bibliographystyle{vancouver}
+\bibliography{amia}  
+
+\section*{Appendix}
+
+\subsection{Georgia Tech Protected Health Data Infrastructure}
+
+\subsubsection{Infrastructure Description}
+\subsubsection*{PHDI Architecture}
 
 The first step in setting up an airgapped system is the profile set-up and management process. This involves configuring the system's security settings, user accounts, and access controls.  
 
@@ -64,11 +148,19 @@ The staging environment is used to prepare and test software before deployment. 
 
 Deployment involves using a gold image, which is a pre-configured system image that contains all the necessary software and configurations for the airgapped system. The gold image is also somewhat ephemeral, meaning it can be easily replaced or updated without affecting the rest of the ABC system. When the gold image is deployed, any content that was created within the staging environment can be included within the gold image. 
 
-\subsection*{Software Management}
+\subsubsection{Considerations}
+
+\subsection*{Practical Considerations for Popular Data Science Languages}
+
+\subsubsection*{Python}
+
+\subsubsection*{R}
+
+\subsubsection*{Software Management}
 
 Since airgapped systems are isolated from external networks, software must be managed internally and shared across environments. This includes configuring and testing software in the staging environment before deploying it via a gold image. 
 
-\subsubsection{R Package Environments}
+\paragraph{R Package Environments}
 
 When working with projects that rely on the R programming language, a variety of issues can propogate:
 
@@ -106,7 +198,7 @@ Some suggested solutions for handling these problems are listed below:
 	\item To address the often nonstandard architecture of R projects in a protected environment, one can set a package .Rprofile with appropriate paths. This .Rprofile can then propagate across processes ensuring that all spawned processes have access to required paths and packages for tasks to be performed on that process.
 \end{enumerate}
 
-\subsubsection{Julia Package Environments}
+\paragraph{Julia Package Environments}
 
 When working with projects that rely on the Julia programming language, a variety of issues can propogate:
 
@@ -116,126 +208,8 @@ When working with projects that rely on the Julia programming language, a variet
 
 Julia packages can be used in airgapped systems, but virtual environments can be thwarted by shared environments. In such cases, system images could be built within the staging environment. This allows developers to test software configurations thoroughly and ensures that they are secure before deployment. 
 
-\section*{Site Collaboration}
-
-Shawn and Jacob speak on lessons learned in collaborating in air-gapped environments. 
-
-Restricted environments can, at times, be frustrating to work with in collaborative efforts. This can be for a number of reasons such as ....
-
-Maintenance cylces: routine maintenance that is part of maintaining a restricted environment can be at odds with collaborative efforts. For example, if a secure environment is going to be down for a few days in a work week, this can delay urgent analysis efforts needed in a collaboration. Additionally, interruptions caused by maintenance can completely pause or stop an analysis. 
-
-To work around this, there are various methods for collaborators can pursue to mitigate disruptions. These stages could then be completed by a site collaborator who has a restricted environment in between maintenance windows. 
-
-Automating export and suppression procedures:
-
-Provide documentation about site specifics to mitigate debugging by site collaborator:
-
-
-
-\section*{Discussion}
-
-A. Biosurveillance and Outbreak Management 
-
-C. Evaluating Public Health Programs 
-
-D. Modeling the Spread of Disease 
-
-E. Understanding the Epidemiology of Disease 
-
-\section*{Conclusion}
-
-Your conclusion goes at the end, followed by References.  References begin below with a header that is centered.  Only the first word of an article title is capitalized in the References.
-
-\section*{Acknowledgments}
-
-% References as numbers
-\makeatletter
-\renewcommand{\@biblabel}[1]{\hfill #1.}
-\makeatother
-
-% unstr is used to keep citation order
-\bibliographystyle{vancouver}
-\bibliography{amia}  
-
-\section*{Appendix}
-
-\subsection*{Practical Considerations for Popular Data Science Languages}
-
-\subsubsection*{Python}
-
-\subsubsection*{R}
-
-\subsubsection*{Julia}
+\subparagraph*{Julia}
 
 Julia's package manager relies on internet access, so it can be challenging to make dependencies available on secure systems. One solution is to use containers, but the issue can also be solved within Julia. PackageCompiler.jl compiles Julia code ahead of time, primarily for improved performance in certain workflows. In particular, generating a sysimage produces a performant stand-alone Julia session, and since its main drawback (version locking) is mitigated on secure systems, it seems to be the best approach for putting a Julia session on a system without internet or ssh access available to users. 
-
-\section{Comments from Matt}
-
-Could you add Richard Starr to this as well, I would be interested in his take on this. Here are a few quick high level thoughts:
- 
-Is the intended scope research and analytics environments or more broad to include anyone working with healthcare data? I think it is the former, but there are a few places where it is more broad.  If you do intend to include hospital settings, then some of the assumptions about how public/accessible/agile things would not apply (I hope!). Similarly including medical equipment in the scope would require more knowledge of how hospitals work operationally.
- 
-I am not sure that air-gapped is the best way to describe the environments as that has a specific connotation in military/defense industry. The literal definition is of course to not have a network connection to the resource. This is not how PHDI has ever operated or what the controls paradigms in healthcare (HIPAA/HITRUST/CMS,etc) are requiring and/or advocating.
- 
-I would be surprised if there are not already some papers in systems and security research that discuss these topics as they are not unique to healthcare. It would be good to get a sense of that in order to determine how best to position this work.
- 
-Depending on how you want to scope things and focus the contribution, I wonder if we couldn’t pick a family of user and operator challenges specific to your workflows? I might suggest tweaking the outline to look something like:
- 
-1) summarize the controls and requirements for working with controlled data at a high level as well as some specific restrictions and limitations that are common to the approaches to meeting the requirements
-2) share some baseline understanding for those doing analysis and development work to understand how working in a more controlled/restricted environment is different from what they are used to including discussing the challenges/overhead with this from the developer point of view as well as those responsible for operating and securing the systems
-4) share some best practices for how to mitigate these challenges and overhead
-5) outline some future needs/direction?
-
-\begin{enumerate}
-    \item Background (Jacob edit/review; Shawn)
-    \begin{enumerate}
-        \item What Are Restricted Environments?
-        \item What Are Their Purpose?
-        \begin{enumerate}
-            \item Common controls for restricted environments
-            \item Requirements Localized for Deployments
-        \end{enumerate}
-        \item Restrictions and limitations in adhering to controls and requirements
-    \end{enumerate}
-    \item Methodologies 
-    \begin{enumerate}
-        \item How Exploratory Data Analysis Usually Works (Jacob)
-        \begin{enumerate}
-            \item             Popular Data Science Ecosystems
-            \item             Software development processes
-        \end{enumerate}
-        \item How Software Development Usually Works (Jacob)
-        \item What is a Network Study and how are they done? (Jacob)
-        \item Contrast general methods with limitations imposed by restricted environments (Shawn)
-        \begin{enumerate}
-            \item Challenges with existing workflows
-            \item ...
-        \end{enumerate}
-    \end{enumerate}
-    \item Recommendations and Best Practices for Analysis and Developments
-    \begin{enumerate}
-        \item System Administration to Enforce Proper Operations and Compliance (Shawn)
-        \begin{enumerate}
-            \item ...
-        \end{enumerate}
-        \item Researcher compliance (Jacob/Shawn)
-        \begin{enumerate}
-            \item Popular Data Science Ecosystems within a Restricted Environment
-            \item Software development processes within a Restricted Environment
-        \end{enumerate}
-    \end{enumerate}
-    \item Discussion
-    \item Conclusion
-    \item Appendix
-    \begin{enumerate}
-        \item Georgia Tech PHDI 
-        \begin{enumerate}
-            \item Infrastructure set-up
-            \item Specific considerations
-        \end{enumerate}
-    \end{enumerate}
-\end{enumerate}
- 
-I do not anticipate having cycles to do the research or drafting, but depending on the approach you go with I can likely give feedback and do some editing prior to submission.
 
 \end{document}

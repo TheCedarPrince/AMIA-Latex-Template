@@ -6,7 +6,7 @@
 \begin{document}
 
 
-\title{Using Airgapped Systems in the Context of Collaborative Health Analytics Partnerships}
+\title{Using Restricted Systems in the Context of Collaborative Health Analytics Partnerships}
 
 \author{Jacob S. Zelko, BS$^1$, Ashlin Harris, PhD$^2$, Shawn Imtiazuddin, MS$^3$, Matt Sanders, MS$^3$, Richard Starr, BS$3$, Megan Denham, MS$1,3$}
 
@@ -54,12 +54,7 @@ Ultimately, the importance of preparing air-gapped solutions in healthcare canno
 
 \section*{Georgia Institute of Technology's Protected Health Data Infrastructure (PHDI)}
 
-\begin{figure}[H]
-  \centering
-    \includegraphics[width=1.0\textwidth]{amia_figure1}
- \caption{Total allergy alerts, overridden alerts, or drug order cancelled.}
- \label{fig:amia_figure}
-\end{figure}
+\subsection{Balancing Privacy with Usability}
 
 \subsection*{PHDI Architecture}
 
@@ -190,6 +185,56 @@ Depending on how you want to scope things and focus the contribution, I wonder i
 2) share some baseline understanding for those doing analysis and development work to understand how working in a more controlled/restricted environment is different from what they are used to including discussing the challenges/overhead with this from the developer point of view as well as those responsible for operating and securing the systems
 4) share some best practices for how to mitigate these challenges and overhead
 5) outline some future needs/direction?
+
+\begin{enumerate}
+    \item Background (Jacob edit/review; Shawn)
+    \begin{enumerate}
+        \item What Are Restricted Environments?
+        \item What Are Their Purpose?
+        \begin{enumerate}
+            \item Common controls for restricted environments
+            \item Requirements Localized for Deployments
+        \end{enumerate}
+        \item Restrictions and limitations in adhering to controls and requirements
+    \end{enumerate}
+    \item Methodologies 
+    \begin{enumerate}
+        \item How Exploratory Data Analysis Usually Works (Jacob)
+        \begin{enumerate}
+            \item             Popular Data Science Ecosystems
+            \item             Software development processes
+        \end{enumerate}
+        \item How Software Development Usually Works (Jacob)
+        \item What is a Network Study and how are they done? (Jacob)
+        \item Contrast general methods with limitations imposed by restricted environments (Shawn)
+        \begin{enumerate}
+            \item Challenges with existing workflows
+            \item ...
+        \end{enumerate}
+    \end{enumerate}
+    \item Recommendations and Best Practices for Analysis and Developments
+    \begin{enumerate}
+        \item System Administration to Enforce Proper Operations and Compliance (Shawn)
+        \begin{enumerate}
+            \item ...
+        \end{enumerate}
+        \item Researcher compliance (Jacob/Shawn)
+        \begin{enumerate}
+            \item Popular Data Science Ecosystems within a Restricted Environment
+            \item Software development processes within a Restricted Environment
+        \end{enumerate}
+    \end{enumerate}
+    \item Discussion
+    \item Conclusion
+    \item Appendix
+    \begin{enumerate}
+        \item Georgia Tech PHDI 
+        \begin{enumerate}
+            \item Infrastructure set-up
+            \item Specific considerations
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate}
  
 I do not anticipate having cycles to do the research or drafting, but depending on the approach you go with I can likely give feedback and do some editing prior to submission.
 

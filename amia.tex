@@ -59,14 +59,44 @@ Ultimately, the importance of preparing air-gapped solutions in healthcare canno
 
 \section{Methodologies}
 
-\subsection{Traditional Exploratory Data Analysis}
+\subsection{Exploratory Data Analysis and Development}
 
-        \begin{enumerate}
-            \item Popular Data Science Ecosystems
-            \item Software development processes
-        \end{enumerate}
+Within exploratory data analysis (EDA) workflows, it is immensely common for researchers or data analysts to utilize languages like Python to build such analyses.
+What is common practice in the context of EDA workflows is that often, languages like Python do not include data science packages within their standard library.
+Instead, analysts rely on external third part libraries to perform these analysis tasks.
+Furthermore, Python has an extensive data science ecosystem and a plethora of package managers to quickly download and begin using these tools in EDA workflows.
 
-\subsection{Traditional Software Development Processes} 
+However, a drawback to this approach is the danger of security in the software someone may install from outside of the language standard libraries.
+For Python, packages are provisioned through PyPi which has some modest security measures to safeguard against malicious code being uploaded to the PyPi software download registry.
+Even still, one popular form of attack is to "typo squat" the names of popular data science packages, such as "pandas", to trick someone into installing a malicious package.
+If someone installed "padnas" by mistake, the installation most likely will succeed but then the malicious software will then be made available on the analyst's machine where it could then cause significant potential damage.
+
+Another aspect within the EDA workflow process is the notion of reproducibility of EDA pipelines.
+A language such as Julia is able to record quickly what packages, package versions, and dependencies an EDA pipeline has through the use of various configuration files (a Project and Mainfest toml in the case of Julia). 
+Then, as long as these configurations are up to date, one can copy this workflow to another machine and reproduce it exactly. 
+
+Important to note is that, like the installation of third party packages, there are limitations in how pipelines can be reproduced. 
+The architecture between machines largely should be the same or, at least, and packages in the EDA workflow should be flexible to handle different operating system or hardware platforms.
+If not, the EDA workflow may fail entirely or lead to unexpected results or errors. 
+Additionally, for languages that are used in EDA pipelines, generally the same version of the language that was used to develop the pipeline must also be used in rebuilding the pipeline on a host machine.
+If the versions do not match, it is possible that various errors will occur and ruin the ability for reproducibility for the EDA  pipeline -- both for using it as well as potentially auditing it in the future. 
+
+Another important consideration to take into account when working with EDApipelines is to also think about perforamnce requirements when working with large amounts of data fed forawrd through such a pipeline.
+In the case of R, the programming language ecosystem there has a strong suppport and bindings for more performant languages such as C++. 
+Using such interfaces, R can become immensely fast and with the addition of tools from the tidyverse, also ergonomic in the utilization of these interfaces in a simple manner.
+
+This sort of concern does definitely depend on the context of where an EDA pipeline takes place. 
+There can be a number of limitations that might make such implementations of an EDA  pipeline uneffective on a new machine. 
+This includes how the architecture of the build system is constructed, what sort of hardware is available, and if resources on the machine where the EDA  pipeline is deployed to has to be shared between many different pipelines or users. 
+
+Finally, arguably the most important aspect of developing an EDA pipeline for deployments is the ability to back up and version the developments made for the pipeline.
+The de facto tool of choice is the tool called, "git", and it is used to back--up snapshots and changes of a given code project at points throughout the existence of the EDA development process.
+Git allows you to create a log of changes that propoagates through the history of theproject giving one easy access to the design decisions that were made to create the package as it currently exists and allows one to quickly revert changes if any new feature added caused an error with the EDA  pipeline.
+Additionally, this gives teams the ability to work on the pipeline in a distributed manner with many persons working on the same or different aspects of the pipeline.
+
+Yet with this approach, there are not so much issues with the concept of version control itself in practice but the set-up it requires.
+Version control generally requires one to back up code to a hosting platform such as GitHub or GitLab.
+This is fine, but requires an internet connection in practice.
 
 \subsection{Collaboration and Network Studies (Jacob)}
 
